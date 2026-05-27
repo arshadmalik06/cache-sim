@@ -68,6 +68,7 @@ CacheSimulator::CacheSimulator(unsigned long cacheSize, unsigned long blockSize,
     }
 }
 
+// Extract the byte offset from address (last offsetBits bits)
 unsigned long CacheSimulator::getBlockOffset(unsigned long address) {
     return address & ((1 << offsetBits) - 1);
 }
