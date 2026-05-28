@@ -61,6 +61,14 @@ private:
     unsigned long offsetBits;         // Bits to select byte within block
     unsigned long indexBits;          // Bits to select which set
     
+    // ========== CACHE STRUCTURE ==========
+    // In real caches, memory is divided into sets.
+    // Each set contains 'associativity' number of blocks.
+    // For example, a 2-way 16KB cache with 64B blocks has:
+    //   - 16KB / 64B = 256 blocks total
+    //   - 256 blocks / 2-way = 128 sets
+    //   - Each set has 2 blocks
+    
     std::vector<std::vector<CacheBlock>> cacheSets;
     
     // ========== STATISTICS ==========
