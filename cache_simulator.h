@@ -96,6 +96,13 @@ public:
     CacheSimulator(unsigned long cacheSize, unsigned long blockSize,
                    unsigned long associativity, ReplacementPolicy policy);
 
+        
+    // ========== MAIN OPERATIONS ==========
+    
+    // Simulate reading from an address
+    // Returns: number of cycles needed for this access
+    // (hit = 1 cycle, miss = 100+ cycles depending on memory latency)
+
     unsigned long read(unsigned long address);
     
     // Simulate writing to an address
