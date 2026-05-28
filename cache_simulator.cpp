@@ -73,10 +73,6 @@ CacheSimulator::CacheSimulator(unsigned long cacheSize, unsigned long blockSize,
 unsigned long CacheSimulator::getBlockOffset(unsigned long address) {
     return address & ((1 << offsetBits) - 1);
 }
-
-// Extract the set index from address
-// Example: if indexBits=8 and offsetBits=6, 
-//          index = (address >> 6) & 0xFF (gets bits 6-13)
 unsigned long CacheSimulator::getIndex(unsigned long address) {
     return (address >> offsetBits) & ((1 << indexBits) - 1);
 }
