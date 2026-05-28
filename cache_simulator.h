@@ -6,6 +6,30 @@
 #include <queue>
 #include <string>
 
+
+/*
+ * ============================================================================
+ * CACHE SIMULATOR - Educational Implementation
+ * ============================================================================
+ * 
+ * A cache is a small, fast memory that stores copies of frequently accessed
+ * data. Instead of always fetching from slow main memory, the CPU checks the
+ * cache first, saving time.
+ * 
+ * KEY CONCEPT: Cache blocks (cache lines)
+ * - The cache doesn't store individual bytes; it stores fixed-size blocks
+ * - Each block contains: tag, data, and metadata (valid bit, dirty bit)
+ * - Block size: typically 64 bytes in real CPUs
+ * 
+ * KEY CONCEPT: Cache operations
+ * - HIT: Data found in cache (fast - ~4 cycles)
+ * - MISS: Data not in cache, must fetch from memory (slow - ~200 cycles)
+ * 
+ * ============================================================================
+ */
+
+// Represents one cache block (cache line)
+
 struct CacheBlock {
     bool valid;           // Is this block valid/in-use?
     bool dirty;           // Has this block been modified? (needs writing back)
