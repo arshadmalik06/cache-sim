@@ -6,10 +6,7 @@
 #include <iomanip>
 
 /*
- * ============================================================================
  * MEMORY ADDRESS BREAKDOWN
- * ============================================================================
- * 
  * A memory address is split into three parts:
  * 
  * [TAG | INDEX | OFFSET]
@@ -25,7 +22,6 @@
  * - TAG:    remaining bits (which block in that set, and from which address?)
  * 
  * This allows cache to quickly find data without searching the entire cache.
- * ============================================================================
  */
 
 CacheSimulator::CacheSimulator(unsigned long cacheSize, unsigned long blockSize,
