@@ -162,7 +162,7 @@ unsigned long CacheSimulator::read(unsigned long address) {
         
         return 1;
     } else {
-        // ===== CACHE MISS =====
+        // CACHE MISS
         // Block not found, must fetch from memory
         cacheMisses++;
         
@@ -201,7 +201,7 @@ unsigned long CacheSimulator::write(unsigned long address, int data) {
     int blockIndex = findBlock(setIndex, tag);
     
     if (blockIndex != -1) {
-        // ===== WRITE HIT =====
+        // WRITE HIT 
         // Block in cache, update it directly
         cacheHits++;
         auto& block = cacheSets[setIndex][blockIndex];
@@ -211,7 +211,7 @@ unsigned long CacheSimulator::write(unsigned long address, int data) {
         
         return 1;
     } else {
-        // ===== WRITE MISS =====
+        //WRITE MISS
         // Block not in cache, allocate it (write-allocate policy)
         cacheMisses++;
         
