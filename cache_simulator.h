@@ -8,9 +8,7 @@
 
 
 /*
- * ============================================================================
  * CACHE SIMULATOR - Educational Implementation
- * ============================================================================
  * 
  * A cache is a small, fast memory that stores copies of frequently accessed
  * data. Instead of always fetching from slow main memory, the CPU checks the
@@ -24,8 +22,6 @@
  * KEY CONCEPT: Cache operations
  * - HIT: Data found in cache (fast - ~4 cycles)
  * - MISS: Data not in cache, must fetch from memory (slow - ~200 cycles)
- * 
- * ============================================================================
  */
 
 // Represents one cache block (cache line)
@@ -61,29 +57,24 @@ private:
     unsigned long offsetBits;         // Bits to select byte within block
     unsigned long indexBits;          // Bits to select which set
     
-    // ========== CACHE STRUCTURE ==========
+    //CACHE STRUCTURE
     // In real caches, memory is divided into sets.
     // Each set contains 'associativity' number of blocks.
     // For example, a 2-way 16KB cache with 64B blocks has:
     //   - 16KB / 64B = 256 blocks total
     //   - 256 blocks / 2-way = 128 sets
     //   - Each set has 2 blocks
-    
     std::vector<std::vector<CacheBlock>> cacheSets;
-    
-    // ========== STATISTICS ==========
+    //STATISTICS
     unsigned long totalAccesses;      // Total memory accesses
     unsigned long cacheHits;          // Number of cache hits
     unsigned long cacheMisses;        // Number of cache misses
     unsigned long totalCycles;        // Accumulated cycles (for performance)
-    
-    // ========== HELPER FUNCTIONS ==========
-    
+    //HELPER FUNCTIONS
     // Extract parts of memory address
     unsigned long getBlockOffset(unsigned long address);  // Last offsetBits
     unsigned long getIndex(unsigned long address);        // Next indexBits
     unsigned long getTag(unsigned long address);          // Remaining bits
-    
     // Find or create space for new block
     int findVictim(unsigned long setIndex);     // Which block to replace?
     int findBlock(unsigned long setIndex, unsigned long tag); // Is block here?
@@ -92,23 +83,18 @@ private:
     void updateLRU(unsigned long setIndex, int blockIndex);
     
 public:
-    // ========== CONSTRUCTOR & SETUP ==========
+    //CONSTRUCTOR & SETUP 
     CacheSimulator(unsigned long cacheSize, unsigned long blockSize,
                    unsigned long associativity, ReplacementPolicy policy);
-
-        
-    // ========== MAIN OPERATIONS ==========
-    
+    // MAIN OPERATIONS 
     // Simulate reading from an address
     // Returns: number of cycles needed for this access
     // (hit = 1 cycle, miss = 100+ cycles depending on memory latency)
 
     unsigned long read(unsigned long address);
-    
     // Simulate writing to an address
     unsigned long write(unsigned long address, int data);
-    
-    // ========== STATISTICS & REPORTING ==========
+    //  STATISTICS & REPORTING 
     
     // Print performance metrics
     void printStats();
